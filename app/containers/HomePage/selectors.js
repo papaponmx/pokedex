@@ -7,7 +7,7 @@ import { initialState } from './reducer';
 
 const selectHome = state => state.get('home', initialState);
 
-const makeSelectUsername = () =>
-  createSelector(selectHome, homeState => homeState.get('username'));
+const makeSelectPokemonName = () =>
+  createSelector(selectHome, homeState => homeState.get('pokemonName'));
 
-export { selectHome, makeSelectUsername };
+export { selectHome, makeSelectPokemonName };

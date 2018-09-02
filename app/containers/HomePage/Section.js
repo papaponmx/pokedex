@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 const Section = styled.section`
-  margin: 3em auto;
-
-  &:first-child {
-    margin-top: 0;
-  }
+  background: tomato;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default Section;

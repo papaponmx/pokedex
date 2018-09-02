@@ -1,17 +1,17 @@
-import { CHANGE_USERNAME } from '../constants';
+import { CHANGE_POKEMON_NAME } from '../constants';
 
-import { changeUsername } from '../actions';
+import { changePokemonName } from '../actions';
 
 describe('Home Actions', () => {
-  describe('changeUsername', () => {
+  describe('changePokemonName', () => {
     it('should return the correct type and the passed name', () => {
       const fixture = 'Max';
       const expectedResult = {
-        type: CHANGE_USERNAME,
+        type: CHANGE_POKEMON_NAME,
         name: fixture,
       };
 
-      expect(changeUsername(fixture)).toEqual(expectedResult);
+      expect(changePokemonName(fixture)).toEqual(expectedResult);
     });
   });
 });

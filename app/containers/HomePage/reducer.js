@@ -11,18 +11,16 @@
  */
 import { fromJS } from 'immutable';
 
-import { CHANGE_USERNAME } from './constants';
-
+import { CHANGE_POKEMON_NAME } from './constants';
 // The initial state of the App
 export const initialState = fromJS({
-  username: '',
+  pokemonName: '',
 });
 
 function homeReducer(state = initialState, action) {
   switch (action.type) {
-    case CHANGE_USERNAME:
-      // Delete prefixed '@' from the github username
-      return state.set('username', action.name.replace(/@/gi, ''));
+    case CHANGE_POKEMON_NAME:
+      return state.set('pokemonName', action.name);
     default:
       return state;
   }

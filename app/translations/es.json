@@ -39,7 +39,7 @@
   "boilerplate.containers.HomePage.start_project.message":
     "Ein skalierendes, offline-first Fundament mit der besten DX und einem Fokus auf Performance und bewährte Methoden",
   "boilerplate.containers.HomePage.tryme.atPrefix": "",
-  "boilerplate.containers.HomePage.tryme.header": "Probiere mich!",
+  "boilerplate.containers.HomePage.pokedex.header": "Pokedex!",
   "boilerplate.containers.HomePage.tryme.message":
     "Zeige die Github Repositories von",
   "boilerplate.containers.LocaleToggle.de": "",

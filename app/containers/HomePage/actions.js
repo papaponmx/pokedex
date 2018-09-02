@@ -15,7 +15,7 @@
  *    }
  */
 
-import { CHANGE_USERNAME } from './constants';
+import { CHANGE_POKEMON_NAME } from './constants';
 
 /**
  * Changes the input field of the form
@@ -24,9 +24,9 @@ import { CHANGE_USERNAME } from './constants';
  *
  * @return {object}    An action object with a type of CHANGE_USERNAME
  */
-export function changeUsername(name) {
+export function changePokemonName(name) {
   return {
-    type: CHANGE_USERNAME,
+    type: CHANGE_POKEMON_NAME,
     name,
   };
 }

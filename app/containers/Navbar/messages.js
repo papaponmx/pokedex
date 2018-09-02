@@ -15,9 +15,9 @@ export default defineMessages({
     defaultMessage:
       'A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices',
   },
-  trymeHeader: {
-    id: 'boilerplate.containers.HomePage.tryme.header',
-    defaultMessage: 'Try me!',
+  pokedexHeader: {
+    id: 'boilerplate.containers.HomePage.pokedex.header',
+    defaultMessage: 'Pokedex Header!',
   },
   trymeMessage: {
     id: 'boilerplate.containers.HomePage.tryme.message',

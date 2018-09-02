@@ -1,13 +1,13 @@
 import { fromJS } from 'immutable';
 
 import homeReducer from '../reducer';
-import { changeUsername } from '../actions';
+import { changePokemonName } from '../actions';
 
 describe('homeReducer', () => {
   let state;
   beforeEach(() => {
     state = fromJS({
-      username: '',
+      pokemonName: '',
     });
   });
 
@@ -16,10 +16,12 @@ describe('homeReducer', () => {
     expect(homeReducer(undefined, {})).toEqual(expectedResult);
   });
 
-  it('should handle the changeUsername action correctly', () => {
-    const fixture = 'mxstbr';
-    const expectedResult = state.set('username', fixture);
+  it('should handle the changePokemonName action correctly', () => {
+    const fixture = 'Pikachu';
+    const expectedResult = state.set('pokemonName', fixture);
 
-    expect(homeReducer(state, changeUsername(fixture))).toEqual(expectedResult);
+    expect(homeReducer(state, changePokemonName(fixture))).toEqual(
+      expectedResult,
+    );
   });
 });
