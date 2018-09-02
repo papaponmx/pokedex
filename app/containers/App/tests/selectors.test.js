@@ -2,10 +2,10 @@ import { fromJS } from 'immutable';
 
 import {
   selectGlobal,
-  makeSelectCurrentUser,
+  makeSelectCurrentPokemon,
   makeSelectLoading,
   makeSelectError,
-  makeSelectRepos,
+  makeSelectPokemonData,
   makeSelectLocation,
 } from '../selectors';
 
@@ -19,16 +19,16 @@ describe('selectGlobal', () => {
   });
 });
 
-describe('makeSelectCurrentUser', () => {
-  const currentUserSelector = makeSelectCurrentUser();
-  it('should select the current user', () => {
-    const username = 'mxstbr';
+describe('makeSelectCurrentPokemon', () => {
+  const currentPokemonSelector = makeSelectCurrentPokemon();
+  it('should select the current pokemon', () => {
+    const pokemonName = 'Pikachu';
     const mockedState = fromJS({
       global: {
-        currentUser: username,
+        currentPokemon: pokemonName,
       },
     });
-    expect(currentUserSelector(mockedState)).toEqual(username);
+    expect(currentPokemonSelector(mockedState)).toEqual(pokemonName);
   });
 });
 
@@ -58,18 +58,16 @@ describe('makeSelectError', () => {
   });
 });
 
-describe('makeSelectRepos', () => {
-  const reposSelector = makeSelectRepos();
-  it('should select the repos', () => {
-    const repositories = fromJS([]);
+describe('makeSelectPokemonData', () => {
+  const dataSelector = makeSelectPokemonData();
+  it('should select the data', () => {
+    const pokemonData = fromJS({});
     const mockedState = fromJS({
       global: {
-        userData: {
-          repositories,
-        },
+        pokemonData,
       },
     });
-    expect(reposSelector(mockedState)).toEqual(repositories);
+    expect(dataSelector(mockedState)).toEqual(pokemonData);
   });
 });
 

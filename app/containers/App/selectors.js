@@ -8,8 +8,8 @@ const selectGlobal = state => state.get('global');
 
 const selectRoute = state => state.get('route');
 
-const makeSelectCurrentUser = () =>
-  createSelector(selectGlobal, globalState => globalState.get('currentUser'));
+const makeSelectCurrentPokemon = () =>
+  createSelector(selectGlobal, globalState => globalState.get('currentPokemon'));
 
 const makeSelectLoading = () =>
   createSelector(selectGlobal, globalState => globalState.get('loading'));
@@ -17,9 +17,9 @@ const makeSelectLoading = () =>
 const makeSelectError = () =>
   createSelector(selectGlobal, globalState => globalState.get('error'));
 
-const makeSelectRepos = () =>
+const makeSelectPokemonData = () =>
   createSelector(selectGlobal, globalState =>
-    globalState.getIn(['userData', 'repositories']),
+    globalState.getIn(['pokemonData']),
   );
 
 const makeSelectLocation = () =>
@@ -27,9 +27,9 @@ const makeSelectLocation = () =>
 
 export {
   selectGlobal,
-  makeSelectCurrentUser,
+  makeSelectCurrentPokemon,
   makeSelectLoading,
   makeSelectError,
-  makeSelectRepos,
+  makeSelectPokemonData,
   makeSelectLocation,
 };
