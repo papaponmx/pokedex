@@ -6,7 +6,6 @@ import {
   pokemonDataLoaded,
   pokemonDataLoadingError,
 } from '../actions';
-import mockData from '../../../mocks.js';
 
 describe('appReducer', () => {
   let state;
@@ -34,10 +33,12 @@ describe('appReducer', () => {
   });
 
   it('should handle the pokemonDataLoaded action correctly', () => {
-    const fixture = mockData;
+    const fixture = {
+      name: 'test',
+    };
     const pokemonName = 'test';
     const expectedResult = state
-      .setIn(['pokemonData', 'repositories'], fixture)
+      .setIn(['pokemonData'], fixture)
       .set('loading', false)
       .set('currentPokemon', pokemonName);
 

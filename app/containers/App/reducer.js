@@ -35,7 +35,7 @@ function appReducer(state = initialState, action) {
         .setIn(['pokemonData'], false);
     case LOAD_POKEMON_DATA_SUCCESS:
       return state
-        .setIn(['pokemonData'], action.repos)
+        .setIn(['pokemonData'], action.data)
         .set('loading', false)
         .set('currentPokemon', action.pokemonName);
     case LOAD_POKEMON_DATA_ERROR:
