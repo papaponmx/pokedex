@@ -1,7 +1,12 @@
 import { fromJS } from 'immutable';
 
 import appReducer from '../reducer';
-import { loadRepos, reposLoaded, repoLoadingError } from '../actions';
+import {
+  loadPokemonData,
+  pokemonDataLoaded,
+  pokemonDataLoadingError,
+} from '../actions';
+import mockData from '../../../mocks.js';
 
 describe('appReducer', () => {
   let state;
@@ -9,10 +14,8 @@ describe('appReducer', () => {
     state = fromJS({
       loading: false,
       error: false,
-      currentUser: false,
-      userData: fromJS({
-        repositories: false,
-      }),
+      currentPokemon: false,
+      pokemonData: fromJS({}),
     });
   });
 
@@ -21,28 +24,24 @@ describe('appReducer', () => {
     expect(appReducer(undefined, {})).toEqual(expectedResult);
   });
 
-  it('should handle the loadRepos action correctly', () => {
+  it('should handle the loadPokemonData action correctly', () => {
     const expectedResult = state
       .set('loading', true)
       .set('error', false)
-      .setIn(['userData', 'repositories'], false);
+      .setIn(['pokemonData'], false);
 
-    expect(appReducer(state, loadRepos())).toEqual(expectedResult);
+    expect(appReducer(state, loadPokemonData())).toEqual(expectedResult);
   });
 
-  it('should handle the reposLoaded action correctly', () => {
-    const fixture = [
-      {
-        name: 'My Repo',
-      },
-    ];
-    const username = 'test';
+  it('should handle the pokemonDataLoaded action correctly', () => {
+    const fixture = mockData;
+    const pokemonName = 'test';
     const expectedResult = state
-      .setIn(['userData', 'repositories'], fixture)
+      .setIn(['pokemonData', 'repositories'], fixture)
       .set('loading', false)
-      .set('currentUser', username);
+      .set('currentPokemon', pokemonName);
 
-    expect(appReducer(state, reposLoaded(fixture, username))).toEqual(
+    expect(appReducer(state, pokemonDataLoaded(fixture, pokemonName))).toEqual(
       expectedResult,
     );
   });
@@ -53,7 +52,7 @@ describe('appReducer', () => {
     };
     const expectedResult = state.set('error', fixture).set('loading', false);
 
-    expect(appReducer(state, repoLoadingError(fixture))).toEqual(
+    expect(appReducer(state, pokemonDataLoadingError(fixture))).toEqual(
       expectedResult,
     );
   });

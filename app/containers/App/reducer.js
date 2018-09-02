@@ -23,7 +23,7 @@ const initialState = fromJS({
   loading: false,
   error: false,
   currentPokemon: false,
-  pokemonData: {},
+  pokemonData: fromJS({}),
 });
 
 function appReducer(state = initialState, action) {
@@ -32,10 +32,10 @@ function appReducer(state = initialState, action) {
       return state
         .set('loading', true)
         .set('error', false)
-        .setIn(['userData', 'repositories'], false);
+        .setIn(['pokemonData'], false);
     case LOAD_POKEMON_DATA_SUCCESS:
       return state
-        .setIn(['userData', 'repositories'], action.repos)
+        .setIn(['pokemonData'], action.repos)
         .set('loading', false)
         .set('currentPokemon', action.pokemonName);
     case LOAD_POKEMON_DATA_ERROR:
