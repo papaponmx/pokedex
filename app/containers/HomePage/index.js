@@ -18,9 +18,9 @@ import {
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
+import PokedexImg from 'images/pokedex.png';
 import Section from './Section';
 import { loadPokemonData } from '../App/actions';
-import { changeUsername } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
@@ -40,7 +40,7 @@ export class HomePage extends React.PureComponent {
         </Helmet>
         <div>
           <Section>
-            Render list here
+            <img src={PokedexImg} alt="Pokedex"/>
           </Section>
         </div>
       </article>
