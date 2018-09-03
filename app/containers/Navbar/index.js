@@ -24,11 +24,10 @@ import messages from './messages';
 import searchHistory from '../../utils/searchHistory';
 
 const RenderSuggestions = () => {
-  const history = searchHistory();
-  if (searchHistory === []) {
+  if (searchHistory() === []) {
     return '';
   }
-  return searchHistory().map(item => <p>Some item</p>);
+  return searchHistory().map(item => <p>{item}</p>);
 };
 
 const Navbar = props => (
@@ -46,7 +45,11 @@ const Navbar = props => (
           onChange={props.onChangePokemonName}
         />
       </label>
-      {props.pokemonName && <Suggestions><RenderSuggestions /></Suggestions>}
+      {props.pokemonName &&
+        <Suggestions>
+          <RenderSuggestions />
+        </Suggestions>
+      }
     </Form>
   </NavbarWrapper>
 );
