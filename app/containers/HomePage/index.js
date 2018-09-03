@@ -14,21 +14,16 @@ import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import {
-  makeSelectPokemonName,
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
 import PokedexImg from 'images/pokedex.png';
-import Section from './Section';
-import { loadPokemonData } from '../App/actions';
+import { Section, ImageWrapper } from './styles';
 import reducer from './reducer';
 import saga from './saga';
 
 /* eslint-disable react/prefer-stateless-function */
 export class HomePage extends React.PureComponent {
-  /**
-   * when initial state username is not null, submit the form to load repos
-   */
   componentDidMount() {}
 
   render() {
@@ -40,7 +35,7 @@ export class HomePage extends React.PureComponent {
         </Helmet>
         <div>
           <Section>
-            <img src={PokedexImg} alt="Pokedex"/>
+            <ImageWrapper src={PokedexImg} alt="Pokedex" />
           </Section>
         </div>
       </article>
@@ -49,8 +44,6 @@ export class HomePage extends React.PureComponent {
 }
 
 HomePage.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   // pokemonName: PropTypes.string,
 };
 

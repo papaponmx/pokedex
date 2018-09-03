@@ -7,6 +7,10 @@ export const Form = styled.form`
 `;
 
 export const NavbarWrapper = styled.div`
+  background-image: linear-gradient(to bottom, rgb(237,83,77) 100%, rgb(51,51,51) 48%, rgb(51,51,51) 52%, rgb(255,255,255) 52%, rgb(255,255,255) 100%);
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 2px #555;
+  color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
