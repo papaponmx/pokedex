@@ -9,7 +9,9 @@ const selectGlobal = state => state.get('global');
 const selectRoute = state => state.get('route');
 
 const makeSelectCurrentPokemon = () =>
-  createSelector(selectGlobal, globalState => globalState.get('currentPokemon'));
+  createSelector(selectGlobal, globalState =>
+    globalState.get('currentPokemon'),
+  );
 
 const makeSelectLoading = () =>
   createSelector(selectGlobal, globalState => globalState.get('loading'));

@@ -11,11 +11,13 @@ import {
 
 import request from 'utils/request';
 import { makeSelectPokemonName } from 'containers/HomePage/selectors';
+import { addToSearchHistory } from '../../utils/searchHistory';
 
 export function* getPokemonData() {
   // Select username from store
   const pokemonName = yield select(makeSelectPokemonName());
-  const requestURL = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
+  addToSearchHistory(pokemonName);
+  const requestURL = `https://pokeapi.co/api/v1/pokemon/${pokemonName}`;
 
   try {
     // Call our request helper (see 'utils/request')

@@ -14,15 +14,13 @@ import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import {
-  makeSelectRepos,
+  makeSelectPokemonName,
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
-import ReposList from 'components/ReposList';
 import Section from './Section';
-import { loadRepos } from '../App/actions';
+import { loadPokemonData } from '../App/actions';
 import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
@@ -31,20 +29,9 @@ export class HomePage extends React.PureComponent {
   /**
    * when initial state username is not null, submit the form to load repos
    */
-  componentDidMount() {
-    if (this.props.username && this.props.username.trim().length > 0) {
-      this.props.onSubmitForm();
-    }
-  }
+  componentDidMount() {}
 
   render() {
-    const { loading, error, repos } = this.props;
-    const reposListProps = {
-      loading,
-      error,
-      repos,
-    };
-
     return (
       <article>
         <Helmet>
@@ -53,7 +40,7 @@ export class HomePage extends React.PureComponent {
         </Helmet>
         <div>
           <Section>
-            <ReposList {...reposListProps} />
+            Render list here
           </Section>
         </div>
       </article>
@@ -64,32 +51,17 @@ export class HomePage extends React.PureComponent {
 HomePage.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  repos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  onSubmitForm: PropTypes.func,
-  username: PropTypes.string,
-  onChangeUsername: PropTypes.func,
+  // pokemonName: PropTypes.string,
 };
 
-export function mapDispatchToProps(dispatch) {
-  return {
-    onChangeUsername: evt => dispatch(changeUsername(evt.target.value)),
-    onSubmitForm: evt => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(loadRepos());
-    },
-  };
-}
-
 const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
-  username: makeSelectUsername(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  // mapDispatchToProps,
 );
 
 const withReducer = injectReducer({ key: 'home', reducer });

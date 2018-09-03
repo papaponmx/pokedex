@@ -9,18 +9,30 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
+// import List from 'components/List/Loadable';
+// import ListItem from 'components/ListItem/Loadable';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
-import Form from './Form';
-import Input from './Input';
+import { NavbarWrapper, Form, Input, Suggestions } from './styles';
 import { loadPokemonData } from '../App/actions';
 import { changePokemonName } from '../HomePage/actions';
+import { makeSelectPokemonName } from '../HomePage/selectors';
 import reducer from '../HomePage/reducer';
 import saga from '../HomePage/saga';
 import messages from './messages';
+import searchHistory from '../../utils/searchHistory';
+
+const RenderSuggestions = () => {
+  const history = searchHistory();
+  if (searchHistory === []) {
+    return '';
+  }
+  return searchHistory().map(item => <p>Some item</p>);
+};
 
 const Navbar = props => (
-  <div>
+  <NavbarWrapper>
     <h2>
       <FormattedMessage {...messages.pokedexHeader} />
     </h2>
@@ -34,8 +46,9 @@ const Navbar = props => (
           onChange={props.onChangePokemonName}
         />
       </label>
+      {props.pokemonName && <Suggestions><RenderSuggestions /></Suggestions>}
     </Form>
-  </div>
+  </NavbarWrapper>
 );
 
 Navbar.propTypes = {
@@ -43,6 +56,10 @@ Navbar.propTypes = {
   onChangePokemonName: PropTypes.func,
   pokemonName: PropTypes.string,
 };
+
+const mapStateToProps = createStructuredSelector({
+  pokemonName: makeSelectPokemonName(),
+});
 
 export function mapDispatchToProps(dispatch) {
   return {
@@ -55,7 +72,7 @@ export function mapDispatchToProps(dispatch) {
 }
 
 const withConnect = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 );
 

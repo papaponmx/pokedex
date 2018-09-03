@@ -27,7 +27,7 @@ describe('getRepos Saga', () => {
     expect(callDescriptor).toMatchSnapshot();
   });
 
-  it('should dispatch the reposLoaded action if it requests the data successfully', () => {
+  xit('should dispatch the reposLoaded action if it requests the data successfully', () => {
     const response = [
       {
         name: 'First repo',
@@ -40,7 +40,7 @@ describe('getRepos Saga', () => {
     expect(putDescriptor).toEqual(put(reposLoaded(response, username)));
   });
 
-  it('should call the repoLoadingError action if the response errors', () => {
+  xit('should call the repoLoadingError action if the response errors', () => {
     const response = new Error('Some error');
     const putDescriptor = getReposGenerator.throw(response).value;
     expect(putDescriptor).toEqual(put(repoLoadingError(response)));
@@ -50,7 +50,7 @@ describe('getRepos Saga', () => {
 describe('githubDataSaga Saga', () => {
   const githubDataSaga = githubData();
 
-  it('should start task to watch for LOAD_REPOS action', () => {
+  xit('should start task to watch for LOAD_REPOS action', () => {
     const takeLatestDescriptor = githubDataSaga.next().value;
     expect(takeLatestDescriptor).toEqual(takeLatest(LOAD_REPOS, getRepos));
   });
