@@ -1,17 +1,17 @@
 {
-  "name": "react-boilerplate",
-  "version": "3.6.0",
+  "name": "pokedex",
+  "version": "1.0.0",
   "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+    "url": "git@github.com:papaponmx/pokedex.git"
   },
   "engines": {
     "npm": ">=5",
     "node": ">=8"
   },
-  "author": "Max Stoiber",
-  "license": "MIT",
+  "author": "Jaime Rios",
+  "license": "WTFPL",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",
