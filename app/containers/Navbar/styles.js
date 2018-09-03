@@ -25,6 +25,7 @@ export const Input = styled.input`
 
 export const Suggestions = styled.div`
   box-shadow: 1px 1px 0.5px 0px rgba(0, 0, 0, 0.75);
+  color: #222;
   top: 22px;
   position: absolute;
   background-color: white;
