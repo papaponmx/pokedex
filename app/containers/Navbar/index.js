@@ -68,6 +68,7 @@ export function mapDispatchToProps(dispatch) {
   return {
     onChangePokemonName: evt => dispatch(changePokemonName(evt.target.value)),
     onSubmitForm: evt => {
+      dispatch(changePokemonName(''));
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(loadPokemonData());
     },

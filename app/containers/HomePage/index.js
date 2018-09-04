@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -16,6 +16,7 @@ import injectSaga from 'utils/injectSaga';
 import {
   makeSelectLoading,
   makeSelectError,
+  makeSelectPokemonData,
 } from 'containers/App/selectors';
 import PokedexImg from 'images/pokedex.png';
 import { Section, ImageWrapper } from './styles';
@@ -43,11 +44,10 @@ export class HomePage extends React.PureComponent {
   }
 }
 
-HomePage.propTypes = {
-  // pokemonName: PropTypes.string,
-};
+HomePage.propTypes = {};
 
 const mapStateToProps = createStructuredSelector({
+  pokemonData: makeSelectPokemonData(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });

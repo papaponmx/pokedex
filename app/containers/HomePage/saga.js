@@ -17,7 +17,8 @@ export function* getPokemonData() {
   // Select username from store
   const pokemonName = yield select(makeSelectPokemonName());
   addToSearchHistory(pokemonName);
-  const requestURL = `https://pokeapi.co/api/v1/pokemon/${pokemonName}`;
+  const requestURL = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
+  // const requestURL = `https://pokeapi.co/api/v1/pokemon/${pokemonName}`;
 
   try {
     // Call our request helper (see 'utils/request')

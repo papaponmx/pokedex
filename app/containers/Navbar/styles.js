@@ -7,7 +7,14 @@ export const Form = styled.form`
 `;
 
 export const NavbarWrapper = styled.div`
-  background-image: linear-gradient(to bottom, rgb(237,83,77) 100%, rgb(51,51,51) 48%, rgb(51,51,51) 52%, rgb(255,255,255) 52%, rgb(255,255,255) 100%);
+  background-image: linear-gradient(
+    to bottom,
+    rgb(237, 83, 77) 100%,
+    rgb(51, 51, 51) 48%,
+    rgb(51, 51, 51) 52%,
+    rgb(255, 255, 255) 52%,
+    rgb(255, 255, 255) 100%
+  );
   border-radius: 0 0 15px 15px;
   box-shadow: 0 2px #555;
   color: white;
@@ -19,11 +26,12 @@ export const NavbarWrapper = styled.div`
 
 export const Input = styled.input`
   outline: none;
-  border-bottom: 1px dotted #999;
+  border-bottom: 1px solid #fff;
   padding-left: 10px;
 `;
 
 export const Suggestions = styled.div`
+  border-radius: 5px;
   box-shadow: 1px 1px 0.5px 0px rgba(0, 0, 0, 0.75);
   color: #222;
   top: 22px;
