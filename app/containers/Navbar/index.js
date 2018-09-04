@@ -14,7 +14,7 @@ import { createStructuredSelector } from 'reselect';
 // import ListItem from 'components/ListItem/Loadable';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
-import { NavbarWrapper, Form, Input, Suggestions } from './styles';
+import { NavbarWrapper, Form, Input, Suggestions, Suggestion } from './styles';
 import { loadPokemonData } from '../App/actions';
 import { changePokemonName } from '../HomePage/actions';
 import { makeSelectPokemonName } from '../HomePage/selectors';
@@ -23,11 +23,20 @@ import saga from '../HomePage/saga';
 import messages from './messages';
 import searchHistory from '../../utils/searchHistory';
 
-const RenderSuggestions = () => {
+const RenderSuggestions = ({ dispatch }) => {
   if (searchHistory() === []) {
     return '';
   }
-  return searchHistory().map(item => <p>{item}</p>);
+  return searchHistory().map(item => (
+    <Suggestion
+      onClick={() => [
+        dispatch(loadPokemonData()),
+        dispatch(changePokemonName(item)),
+      ]}
+    >
+      {item}
+    </Suggestion>
+  ));
 };
 
 const Navbar = props => (
@@ -47,7 +56,7 @@ const Navbar = props => (
       </label>
       {props.pokemonName &&
         <Suggestions>
-          <RenderSuggestions />
+          <RenderSuggestions dispatch={props.dispatch} />
         </Suggestions>
       }
     </Form>
@@ -57,6 +66,7 @@ const Navbar = props => (
 Navbar.propTypes = {
   onSubmitForm: PropTypes.func,
   onChangePokemonName: PropTypes.func,
+  dispatch: PropTypes.func,
   pokemonName: PropTypes.string,
 };
 
@@ -68,9 +78,9 @@ export function mapDispatchToProps(dispatch) {
   return {
     onChangePokemonName: evt => dispatch(changePokemonName(evt.target.value)),
     onSubmitForm: evt => {
-      dispatch(changePokemonName(''));
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(loadPokemonData());
+      dispatch(changePokemonName(''));
     },
   };
 }

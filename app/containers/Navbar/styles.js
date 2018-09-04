@@ -40,3 +40,7 @@ export const Suggestions = styled.div`
   width: 100%;
   padding-left: 10px;
 `;
+
+export const Suggestion = styled.button`
+  display: block;
+`;
