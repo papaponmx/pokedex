@@ -1,9 +1,8 @@
 /*
-* FeaturePage
-*
-* List all the features
+* Pokemon Detail Page
 */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
@@ -13,6 +12,7 @@ import { compose } from 'redux';
 import H1 from 'components/H1';
 import { makeSelectPokemonData } from 'containers/App/selectors';
 import messages from './messages';
+import PokemonDetail from '../../components/PokemonDetail';
 
 class PokemonDetailPage extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
@@ -35,10 +35,19 @@ class PokemonDetailPage extends React.Component {
         <H1>
           <FormattedMessage {...messages.header} />
         </H1>
+        <PokemonDetail pokemonData={this.props.pokemonData} />
       </div>
     );
   }
 }
+
+PokemonDetailPage.propTypes = {
+  onSubmitForm: PropTypes.func,
+  onChangePokemonName: PropTypes.func,
+  dispatch: PropTypes.func,
+  pokemonName: PropTypes.string,
+  pokemonData: PropTypes.object,
+};
 
 const mapStateToProps = createStructuredSelector({
   pokemonData: makeSelectPokemonData(),

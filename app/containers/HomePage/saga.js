@@ -3,6 +3,7 @@
  */
 
 import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { push } from 'react-router-redux';
 import { LOAD_POKEMON_DATA } from 'containers/App/constants';
 import {
   pokemonDataLoaded,
@@ -24,6 +25,7 @@ export function* getPokemonData() {
     // Call our request helper (see 'utils/request')
     const data = yield call(request, requestURL);
     yield put(pokemonDataLoaded(data, pokemonName));
+    yield put(push('/pokemon'));
   } catch (err) {
     yield put(pokemonDataLoadingError(err));
   }
